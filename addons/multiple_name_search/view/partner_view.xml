@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+	<!-- 给res.partner 的视图加上pinyin和py字段-->
+		<record model="ir.ui.view" id="res_partner_simplified_form_inherit_pinyin">
+			<field name="name">res.partner.simplified.form.inherit.pinyin</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_simple_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="on_change">
+                    	onchange_name(name)
+                    </attribute>
+                </xpath>
+				<xpath expr="//field[@name='parent_id']" position="before">
+					<label for="name" string="拼音"/><field name='pinyin'/>
+					<label for="name" string="拼音首字母"/><field name='py'/>
+				</xpath>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="res_partner_form_inherit_pinyin" >
+            <field name="name">res.partner.form.inherit.pinyin</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="on_change">
+                    	onchange_name(name)
+                    </attribute>
+                </xpath>
+            	<xpath expr="//field[@name='parent_id']" position="before">
+					<label for="name" string="拼音"/><field name='pinyin'/>
+					<label for="name" string="拼音首字母"/><field name='py'/>
+				</xpath>
+            </field>
+         </record>
+	</data>
+</openerp>

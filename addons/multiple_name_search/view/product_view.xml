@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		 <record id="product_template_form_view_inherit_pinyin_py" model="ir.ui.view">
+            <field name="name">product.template.form.inherit.pinyin</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="on_change">
+                    	onchange_name(name)
+                    </attribute>
+                </xpath>
+                <div name="options" position="inside">
+                    <div>
+                         <label for="name" string="拼音"/><field name='pinyin'/>
+	                     <label for="name" string="拼音首字母"/><field name='py'/>
+                    </div>
+                </div>
+            </field>
+         </record>
+	</data>
+</openerp>
